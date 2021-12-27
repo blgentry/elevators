@@ -15,7 +15,7 @@ class car(elevator):
         line_buffer = ""
         if self.doors_open == 1:
             # doors open
-            line_buffer = f"]{self.CARWIDTH * ' '}["
+            line_buffer = f"]{(self.CARWIDTH - 2) * ' '}["
         else:
             # doors shut
             halfwidth = f"{int((self.CARWIDTH - 3)/2) * ' '}"
