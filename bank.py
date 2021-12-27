@@ -18,15 +18,11 @@ class bank(elevator):
         print(frame_buffer)
 
     def header(self):
-        line_buffer = ""
-        line_buffer += " " * self.STATUSWIDTH
+        line_buffer = " " * self.STATUSWIDTH
         halfcar = int((self.CARWIDTH - 1) / 2) 
+        padding = f"{(halfcar) * ' '}"
         for i in range(1, self.number_cars + 1):
-            # account for wall
-            line_buffer += " "
-            line_buffer += " " * halfcar
-            line_buffer += str(i)
-            line_buffer += " " * halfcar
+            line_buffer += f" {padding}{str(i)}{padding}"
         line_buffer += "\n"
         return line_buffer
 
@@ -37,24 +33,18 @@ class bank(elevator):
         return line_buffer
 
     def show_floor(self,floor):
-        line_buffer = ""
-        # floor number 
-        line_buffer += str(floor)
-        # pad status area
+        # status area
         pad = (self.STATUSWIDTH - len(str(floor))) * " "
-        line_buffer += pad
+        line_buffer = f"{str(floor)}{pad}"
         for car in range(1,self.number_cars + 1):
-            # left wall
-            line_buffer += "|"
-            # car
             if self.cars[car].location == floor:
-                line_buffer += self.cars[car].display() 
+                shaftcontents = self.cars[car].display() 
             else:
-                line_buffer += self.CARWIDTH * " "
-
+                shaftcontents = self.CARWIDTH * " "
+            # left wall and shaft display
+            line_buffer += f"|{shaftcontents}"
         # last wall
-        line_buffer += "|"
-        line_buffer += "\n"
+        line_buffer += f"|\n"
         return line_buffer
 
     def run(self):
