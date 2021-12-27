@@ -12,19 +12,13 @@ class car(elevator):
         self.state = "READY"
 
     def display(self):
-        line_buffer = ""
         if self.doors_open == 1:
             # doors open
-            line_buffer += "]"
-            line_buffer += (self.CARWIDTH - 2) * " "
-            line_buffer += "["
+            line_buffer = f"]{(self.CARWIDTH - 2) * ' '}["
         else:
             # doors shut
-            line_buffer += "["
-            line_buffer += int(((self.CARWIDTH - 3) /2)) * " "
-            line_buffer += "|"
-            line_buffer += int(((self.CARWIDTH - 3) /2)) * " "
-            line_buffer += "]"
+            halfwidth = f"{int((self.CARWIDTH - 3)/2) * ' '}"
+            line_buffer = "[{halfwidth}|{halfwidth}]"
 
         return(line_buffer)
 
