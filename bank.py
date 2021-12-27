@@ -18,12 +18,14 @@ class bank(elevator):
         print(frame_buffer)
 
     def header(self):
-        line_buffer = " " * self.STATUSWIDTH
+        status = " " * self.STATUSWIDTH
+        main_header = ""
         halfcar = int((self.CARWIDTH - 1) / 2) 
         padding = f"{(halfcar) * ' '}"
+        # car numbers centered on shafts
         for i in range(1, self.number_cars + 1):
-            line_buffer += f" {padding}{str(i)}{padding}"
-        line_buffer += "\n"
+            main_header += f" {padding}{str(i)}{padding}"
+        line_buffer = f"{status}{main_header}\n"
         return line_buffer
 
     def body(self):
@@ -35,16 +37,17 @@ class bank(elevator):
     def show_floor(self,floor):
         # status area
         pad = (self.STATUSWIDTH - len(str(floor))) * " "
-        line_buffer = f"{str(floor)}{pad}"
+        status = f"{str(floor)}{pad}"
+        # elevator shafts with empty areas or cars
+        main_floor = ""
         for car in range(1,self.number_cars + 1):
             if self.cars[car].location == floor:
                 shaftcontents = self.cars[car].display() 
             else:
                 shaftcontents = self.CARWIDTH * " "
             # left wall and shaft display
-            line_buffer += f"|{shaftcontents}"
-        # last wall
-        line_buffer += f"|\n"
+            main_floor += f"|{shaftcontents}"
+        line_buffer = f"{status}{main_floor}|\n"
         return line_buffer
 
     def run(self):
