@@ -5,14 +5,14 @@ class car(elevator):
         self.levels = levels
         self.travel = 0
         self.location = 1
-        self.doors_open = 1
+        self.doors_open = True
         self.queue = []
         self.queueup = []
         self.queuedown = []
         self.state = "READY"
 
     def display(self):
-        if self.doors_open == 1:
+        if self.doors_open:
             # doors open
             line_buffer = f"]{(self.CARWIDTH - 2) * ' '}["
         else:
@@ -35,12 +35,12 @@ class car(elevator):
         if self.queueup != []:
             self.queue = self.queueup
             self.travel = 1
-            self.doors_open = 0
+            self.doors_open = False
             self.state = "RUN"
         elif self.queuedown != []:
             self.queue = self.queuedown
             self.travel = -1
-            self.doors_open = 0
+            self.doors_open = False
             self.state = "RUN"
 
     def press_button(self, floor):
@@ -72,12 +72,12 @@ class car(elevator):
         if (target == self.location):
             self.queue.remove(target)
             self.state = "RUN_LAND"
-            self.doors_open = 1
+            self.doors_open = True
         else:
             self.location += self.travel
 
     def do_run_land(self):
-        self.doors_open = 0
+        self.doors_open = False
         if self.queue == []:
             #print("queue is empty")
             if self.queueup != []:
@@ -93,7 +93,7 @@ class car(elevator):
                 self.state = "RUN"
             else: 
                 self.state = "READY"
-                self.doors_open = 1
+                self.doors_open = True
         else:
             self.state = "RUN"
         

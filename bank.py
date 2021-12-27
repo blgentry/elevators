@@ -62,11 +62,11 @@ class bank(elevator):
 if __name__ == "__main__":
     b = bank(8, 5)
     print(b.number_cars,"Cars on", b.levels,"Floors.")
-    b.cars[5].doors_open = 0
+    b.cars[5].doors_open = False
     b.cars[5].location = 1
     b.cars[4].location = 7
-    b.cars[4].doors_open = 0
-    b.cars[3].doors_open = 0
+    b.cars[4].doors_open = False
+    b.cars[3].doors_open = False
     b.cars[3].location = 3
     b.cars[2].location = 8
     b.display()
