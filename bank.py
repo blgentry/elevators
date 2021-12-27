@@ -8,10 +8,8 @@ class bank(elevator):
     def __init__(self, levels, cars):
         self.number_cars = cars
         self.levels = levels
-        self.cars = [car(self.levels) for i in range(0,self.number_cars)]
-        # Elevator cars are indexed by human natural numbers starting at 1 .  Add dummy entry to 
-        # start of list so that index 1 is the first car.
-        self.cars.insert(0,"dummy")
+        # initialize cars dictionary indexed by number.  Starts at 1, goes to number of cars
+        self.cars = {i: car(self.levels) for i in range(1,self.number_cars + 1)}
 
     def display(self):
         frame_buffer = ""
