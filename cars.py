@@ -18,7 +18,7 @@ class car(elevator):
         else:
             # doors shut
             halfwidth = f"{int((self.CARWIDTH - 3)/2) * ' '}"
-            line_buffer = "[{halfwidth}|{halfwidth}]"
+            line_buffer = f"[{halfwidth}|{halfwidth}]"
 
         return(line_buffer)
 
