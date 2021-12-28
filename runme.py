@@ -1,8 +1,10 @@
 from bank import bank
 from simple_term_menu import TerminalMenu
 
+TITLE = "ELEVATOR SIMULATOR by Brian L. Gentry"
+
 def show_title():
-    print("ELEVATOR SIMULATOR by Brian L. Gentry")
+    print(TITLE)
     print()
 
 def teleport():
@@ -67,28 +69,21 @@ def select_direction():
     direction = direction_keys[direction_choice_index] 
     return direction
 
+def do_quit():
+    print (f"Thanks for using {TITLE}")
+    quit()
 
 def main():
     main_options = ["[r] run timestep","[b] press elevator button","[d] toggle doors","[t] teleport","[q] quit","[c] floor call"]
+    main_functions = ['b.run()','press_button()','toggle_doors()','teleport()','do_quit()','floor_call()']
     main_menu = TerminalMenu(main_options)
     run = True
     while (run):
         show_title()
         b.display()
         choice_index = main_menu.show()
-        choice = main_options[choice_index]
-        if choice == "[q] quit":
-            run = False
-        elif choice == "[r] run timestep":
-            b.run()
-        elif choice == "[t] teleport":
-            teleport()
-        elif choice == "[c] floor call":
-            floor_call()
-        elif choice == "[d] toggle doors":
-            toggle_doors()
-        elif choice == "[b] press elevator button":
-            press_button()
+        # execute function corresponding to menu choice.  Indexes of main_options and main_functions are synched
+        eval(main_functions[choice_index])
 
 def setup():
     show_title()
