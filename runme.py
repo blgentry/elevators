@@ -1,10 +1,9 @@
 from bank import bank
 from simple_term_menu import TerminalMenu
-
-TITLE = "ELEVATOR SIMULATOR by Brian L. Gentry"
+from program_text import program_text
 
 def show_title():
-    print(TITLE)
+    print(pt.title)
     print()
 
 def teleport():
@@ -31,16 +30,11 @@ def floor_call():
     b.floor_call(floor,direction)
     
 def select_car():
-    # menu for car selection
-    car_options = []
-    for f in range(1, b.number_cars + 1):
-        # use shortcut keys for car numbers
-        car_options.append("["+str(f)+"] "+str(f))
-
+    car_options = [f"[{str(c)}] {str(c)}" for c in range(1, b.number_cars + 1)]
     car_menu = TerminalMenu(car_options,title="Elevator:")
-    car_index = int(car_menu.show())
-    car_index += 1
-    car = int(car_index)
+    car_index = car_menu.show()
+    car_index += 1 # list indicies start at 0 but car numbers start at 1, so add 1
+    car = car_index
     return car
 
 def select_floor():
@@ -70,7 +64,7 @@ def select_direction():
     return direction
 
 def do_quit():
-    print (f"Thanks for using {TITLE}")
+    print (pt.quit)
     quit()
 
 def main():
@@ -88,8 +82,8 @@ def main():
 def setup():
     show_title()
     print("Setup:")
-    el = input("number of elevators:")
-    fl = input("number of floors:")
+    el = input(pt.setup_elevators)
+    fl = input(pt.setup_floors)
     # defaults if user just presses enter to questions
     if (el == ""):
         el = 4
@@ -100,5 +94,6 @@ def setup():
     b = bank(fl,el)
     return b
 
+pt = program_text()
 b = setup()
 main()
