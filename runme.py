@@ -26,12 +26,12 @@ def press_button():
 def floor_call():
     floor = select_floor()
     direction = select_direction()
-    print("Floor call to",floor,"going",direction)
+#    print("Floor call to",floor,"going",direction)
     b.floor_call(floor,direction)
     
 def select_car():
     car_options = [f"[{str(c)}] {str(c)}" for c in range(1, b.number_cars + 1)]
-    car_menu = TerminalMenu(car_options,title="Elevator:")
+    car_menu = TerminalMenu(car_options,title=f"{pt.select_car}")
     car_index = car_menu.show()
     car_index += 1 # list indicies start at 0 but car numbers start at 1, so add 1
     car = car_index
@@ -49,7 +49,7 @@ def select_floor():
         else:
             floor_options.append(str(f))
         floors.append(f)
-    floor_menu = TerminalMenu(floor_options,title="floor:")
+    floor_menu = TerminalMenu(floor_options,title=f"{pt.select_floor}")
     floor_index = floor_menu.show()
     floor = floors[floor_index]
     return floor
@@ -58,7 +58,7 @@ def select_direction():
     # menu for up/down selection
     direction_options = ["[u] up","[d] down"]
     direction_keys = ["up","down"]
-    direction_menu = TerminalMenu(direction_options,title="direction:")
+    direction_menu = TerminalMenu(direction_options,title=f"{pt.select_direction}")
     direction_choice_index = direction_menu.show()
     direction = direction_keys[direction_choice_index] 
     return direction
