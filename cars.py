@@ -99,6 +99,7 @@ class car(elevator):
         
 
 if __name__ == "__main__":
+    # demo to show car display and levels variable
     c = car(8)
     print("I have",c.levels,"floors.")
     print("Doors open  :", c.display())
