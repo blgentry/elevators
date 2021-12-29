@@ -5,7 +5,7 @@ class car(elevator):
         self.levels = levels
         self.travel = 0
         self.location = 1
-        self.doors_open = True
+        self.doors_open = False
         self.queue = []
         self.queueup = []
         self.queuedown = []
@@ -93,7 +93,7 @@ class car(elevator):
                 self.state = "RUN"
             else: 
                 self.state = "READY"
-                self.doors_open = True
+                self.doors_open = False
         else:
             self.state = "RUN"
         
