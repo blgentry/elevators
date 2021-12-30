@@ -43,10 +43,7 @@ class bank(elevator):
         # elevator shafts with empty areas or cars
         main_floor = ""
         for car in range(1,self.number_cars + 1):
-            if self.cars[car].location == floor:
-                main_floor += f"|{self.cars[car].display()}"
-            else:
-                main_floor += f"|{self.CARWIDTH * ' '}"
+            main_floor += f"|{self.cars[car].display(floor)}"
         line_buffer = f"{status}{main_floor}|\n"
         return line_buffer
 

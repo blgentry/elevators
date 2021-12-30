@@ -11,14 +11,19 @@ class car(elevator):
         self.queuedown = []
         self.state = "READY"
 
-    def display(self):
-        if self.doors_open:
-            # doors open
-            line_buffer = f"]{(self.CARWIDTH - 2) * ' '}["
+    def display(self,floor):
+        if self.location == floor:
+            # display car in hoistway
+            if self.doors_open:
+                # doors open
+                line_buffer = f"]{(self.CARWIDTH - 2) * ' '}["
+            else:
+                # doors shut
+                halfwidth = f"{int((self.CARWIDTH - 3)/2) * ' '}"
+                line_buffer = f"[{halfwidth}|{halfwidth}]"
         else:
-            # doors shut
-            halfwidth = f"{int((self.CARWIDTH - 3)/2) * ' '}"
-            line_buffer = f"[{halfwidth}|{halfwidth}]"
+            # display empty hoistway
+            line_buffer = f"{' ' * self.CARWIDTH}"
 
         return(line_buffer)
 
