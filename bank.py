@@ -1,4 +1,5 @@
-# Sublcass of elevator for the elevator bank, which controls one or more elevator cars.  
+# Sublcass of elevator for the elevator bank, which controls one or more 
+# elevator cars.  
 # cars are a separate subclass
 
 from elevators import elevator
@@ -8,7 +9,8 @@ class bank(elevator):
     def __init__(self, levels, cars):
         self.number_cars = cars
         self.levels = levels
-        # initialize cars dictionary indexed by number.  Starts at 1, goes to number of cars
+        # initialize cars dictionary indexed by number.  Starts at 1, goes to 
+        # number of cars
         self.cars = {i: car(self.levels) for i in range(1,self.number_cars + 1)}
 
     def display(self):
