@@ -1,4 +1,5 @@
-# Superclass for Elevator classes with variables to be accessed by all subclasses
+# Superclass for Elevator classes with variables to be accessed by all 
+# subclasses
 
 class elevator:
     CARWIDTH = 7
