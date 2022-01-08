@@ -8,4 +8,4 @@ class program_text:
         s.select_direction = "Direction:"
         s.setup_elevators = "Number of Elevators:"
         s.setup_floors = "Number of Floors:"
-        s.quit = f"Thank you for using {self.title}"
+        s.quit = f"Thank you for using {s.title}"
